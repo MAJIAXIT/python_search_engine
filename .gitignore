@@ -3,3 +3,4 @@ directories/
 __pycache__/
 crawler/__pycache__/
 searcher/__pycache__/
+venv/
