@@ -1,0 +1,5 @@
+config.py
+directories/
+__pycache__/
+crawler/__pycache__/
+searcher/__pycache__/
