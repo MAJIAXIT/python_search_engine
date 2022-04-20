@@ -30,8 +30,11 @@ def create_file(file_path, data):
 
 def append_to_file(file_path, data):
     """Append the data to the end of file"""
-    with open(file_path, 'a') as file:
-        file.write(str(data) + '\n')
+    try:
+        with open(file_path, 'a') as file:
+            file.write(str(data) + '\n')
+    except Exception as e:
+        print(str(e))
 
 
 def file_to_set(file_path):

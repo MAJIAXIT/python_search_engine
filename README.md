@@ -3,6 +3,7 @@
 To use all modules run from terminal in project folder:
 pip install -r requirements.txt
 
+create `directories` folder 
 
 
 
