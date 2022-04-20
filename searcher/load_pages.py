@@ -1,4 +1,3 @@
-import json
 from searcher.pages import Page
 
 
