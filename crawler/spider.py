@@ -40,7 +40,9 @@ class Spider:
             print(spider_name + ' now crawling ' + page_url)
             print('Queue ' + str(len(Spider.queue)) +
                   ' | Crawled ' + str(len(Spider.crawled)), end='\r')
-            Spider.add_links_to_queue(Spider.gather_links(page_url))
+            links = Spider.gather_links(page_url)
+            if len(links) > 0:
+                Spider.add_links_to_queue(links)
             Spider.queue.remove(page_url)
             Spider.crawled.add(page_url)
             Spider.update_files()
@@ -48,17 +50,20 @@ class Spider:
     @staticmethod
     def gather_links(page_url):
         """Gets the html and links from file and format it"""
+        links = set()
         try:
             r = requests.get(url=page_url)
-            finder = LinksFinder(Spider.base_url, page_url)
-            finder.feed(r.text)
+            content_type = r.headers.get('content-type')
+            if 'html' in content_type:
+                finder = LinksFinder(Spider.base_url, page_url)
+                finder.feed(r.text)
+                content = finder.page_links()[1]
+                append_to_file(Spider.data_file, content)
+                links = finder.page_links()[0]
         except Exception as e:
             print(str(e))
-            return set()
 
-        append_to_file(Spider.data_file, finder.page_links()[1])
-
-        return finder.page_links()[0]
+        return links
 
     @staticmethod
     def add_links_to_queue(links):
