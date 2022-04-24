@@ -62,5 +62,5 @@ class Index:
                 tf = page.term_frequency(token)
                 idf = self.inverse_page_frequency(token)
                 score += tf * idf
-            results.append((page, f'rating: {score}'))
-        return sorted(results, key=lambda page: page[1], reverse=True)
+            results.append((page, score))
+        return sorted(results, key=lambda page: score, reverse=True)
