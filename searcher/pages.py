@@ -16,7 +16,7 @@ class Page:
 
     def analyze(self):
         """Set the count of tokens on page"""
-        self.term_frequencies = Counter(self.fulltext)
+        self.term_frequencies = Counter(self.data)
 
     def term_frequency(self, term):
         """Get the frequency of token on page"""

@@ -20,9 +20,11 @@ def search_on_directory(PROJECT_NAME, query, search_type):
         answer = [f'Index contains {len(index.pages)} pages']
 
         for link in index.search(query, search_type=search_type):
-            answer.append('id: ' + str(link[0].__dict__['id']) +
-                          ' url: ' + str(link[0].__dict__['url']))
+            dict_link = link[0].__dict__
+            answer.append('id: ' + str(dict_link['id']) +
+                          ' url: ' + str(dict_link['url']) + ' ' + link[1])
 
     if len(index.pages) == 0:
-        answer = [f'There are no directory with name: ' + PROJECT_NAME]
+        answer = [f'There are no directory with name: `' +
+                  PROJECT_NAME + '` or data.txt file is uncorrect.']
     return answer

@@ -76,11 +76,11 @@ def search():
         text = input('Enter text to find: $ ')
         search_type = input('Enter search type (or, and): $ ')
         answer = search_on_directory(directory, text, search_type)
-        if len(answer) > 0:
+        if len(answer) > 1:
             for page in answer:
                 print(page)
         else:
-            print('No search results.')
+            print('\nNo search results.')
     else:
         print('There are no such directory')
         print(f'Available directories: {get_directories()}')
