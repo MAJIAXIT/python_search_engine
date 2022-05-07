@@ -1,5 +1,4 @@
 import os
-import xml.etree.ElementTree as et
 
 
 def create_directory_for_url(directory):
