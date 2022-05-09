@@ -18,3 +18,10 @@ The `console_client` is the console app that helps user to interact with `crawle
 
 The `bot_searcher` is the telegram bot based on aiogram library. From this bot user only can search in the previously collected data.
 To use `bot_searcher` you should create the `config.py` file and put `bot_token = '<token>'` with your bot token into it.
+
+## Crawler block diagram
+![crawler_block_diagram](https://user-images.githubusercontent.com/76401858/167364551-95b69cb1-b62b-4a97-89dd-2f0fcc4cf590.png)
+
+
+## Searcher block diagram
+![searcher_block_diagram](https://user-images.githubusercontent.com/76401858/167364602-5bc9b9c4-7fb6-4e6e-affd-a5ceb763df25.png)
