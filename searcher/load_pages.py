@@ -2,7 +2,7 @@ from searcher.pages import Page
 
 
 def load_pages(PROJECT_NAME):
-    """Make the data classes from data.txt and yield them"""
+    """Yield page objects from data.txt file"""
     try:
         with open('directories/' + PROJECT_NAME + '/data.txt', 'r') as file:
             page_id = 0

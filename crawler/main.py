@@ -11,7 +11,7 @@ queue = Queue()
 
 
 def create_workers():
-    """Create the threads"""
+    """Create threads"""
     for _ in range(NUMBER_OF_THREADS):
         t = threading.Thread(target=work)
         t.daemon = True
@@ -19,7 +19,7 @@ def create_workers():
 
 
 def work():
-    """Make threads work like Spider class"""
+    """Make threads work like a Spider class"""
     while True:
         url = queue.get()
         Spider.crawl_page(threading.current_thread().name, url)
@@ -35,14 +35,14 @@ def create_jobs(QUEUE_FILE):
 
 
 def crawl(QUEUE_FILE):
-    """Checks the items in queue and work with them if they exists"""
+    """Check the items in queue and make jobs for threads"""
     queued_links = file_to_set(QUEUE_FILE)
     if len(queued_links) > 0:
         print(str(len(queued_links)) + ' links in the queue')
         create_jobs(QUEUE_FILE)
 
 
-def get_data_from_domen(HOMEPAGE):
+def get_data_from_domain(HOMEPAGE):
     """Run the crawler"""
     DOMAIN_NAME = get_domain_name(HOMEPAGE)
     PROJECT_NAME = get_project_name(HOMEPAGE)

@@ -1,23 +1,23 @@
 # python_search_engine
 
 ## Usage
-  
-To use all modules run from terminal in project folder:
+
+To use all modules run following command from terminal in project folder:
+
 ```
 pip install -r requirements.txt
 ```
-create `directories` folder
 
 ## Work
 
-The `crawler` module - collect all data from page and subpages of entered domen, analyze the content from html data and write it into the data.txt file of local domen directory folder.
+- `crawler` module - collect all data from page and subpages of entered domain, analyze the content on webpage and write it into the data.txt file of local domain folder.
 
-The `searcher` module - index the pages in data.txt file, make search with entered string and rank the results. Returns the list of relevant search results.
+- `searcher` module - indexes the pages in the data.txt file, searches for the entered string and rank the results. Returns a list of relevant search results.
 
-The `console_client` is the console app that helps user to interact with `crawler` and `searcher` modules using their functions. This app has the full acces to the `crawler` and `searcher` modules.
+- `console_client` - the console app that helps user to interact with `crawler` and `searcher` modules. This application has the full acces to the `crawler` and `searcher` modules.
 
-The `bot_searcher` is the telegram bot based on aiogram library. From this bot user only can search in the previously collected data.
-To use `bot_searcher` you should create the `config.py` file and put `bot_token = '<token>'` with your bot token into it.
+- `bot_searcher` - telegram bot based on the aiogram library. With this bot, the user can only search in previously collected domains.
+To use `bot_searcher`, you must create a `config.py` file and put `bot_token = '<token>'` into it with your bot token.
 
 ## Crawler block diagram
 ![crawler_block_diagram](https://user-images.githubusercontent.com/76401858/167364551-95b69cb1-b62b-4a97-89dd-2f0fcc4cf590.png)

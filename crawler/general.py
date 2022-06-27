@@ -2,14 +2,14 @@ import os
 
 
 def create_directory_for_url(directory):
-    """Making directory with the contents of site"""
+    """Create a directory for site content"""
     if not os.path.exists('directories/' + directory):
         print('Creating directory ' + directory)
         os.makedirs('directories/' + directory)
 
 
 def create_data_files(project_name, base_url):
-    """Making the files with queue and file with crawled urls"""
+    """Create queue and crawled files"""
     queue = 'directories/' + project_name + '/queue.txt'
     crawled = 'directories/' + project_name + '/crawled.txt'
     data = 'directories/' + project_name + '/data.txt'
@@ -37,7 +37,7 @@ def append_to_file(file_path, data):
 
 
 def file_to_set(file_path):
-    """Makes the set from strings in file"""
+    """Load words from file into a set"""
     results = set()
     with open(file_path, 'rt') as file:
         for line in file:
@@ -46,7 +46,7 @@ def file_to_set(file_path):
 
 
 def set_to_file(links, file_path):
-    """Append the content of set to file"""
+    """Load words from set into a file"""
     with open(file_path, "w") as file:
         for link in sorted(links):
             file.write(link + "\n")

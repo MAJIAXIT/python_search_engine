@@ -5,7 +5,6 @@ import requests
 
 
 class Spider:
-    """Variables for all spiders"""
     project_name = ''
     base_url = ''
     domain_name = ''
@@ -15,7 +14,7 @@ class Spider:
     crawled = set()
 
     def __init__(self, project_name, base_url, domain_name):
-        """First spider creates the files"""
+        """First spider creates files"""
         Spider.project_name = project_name
         Spider.base_url = base_url
         Spider.domain_name = domain_name
@@ -27,7 +26,7 @@ class Spider:
 
     @staticmethod
     def boot():
-        """Creates the directory and data files on first run"""
+        """Create the directory and data files on first run"""
         create_directory_for_url(Spider.project_name)
         create_data_files(Spider.project_name, Spider.base_url)
         Spider.queue = file_to_set(Spider.queue_file)
@@ -35,7 +34,7 @@ class Spider:
 
     @staticmethod
     def crawl_page(spider_name, page_url):
-        """Fills queue with formated links, update other files and write the message"""
+        """Fill queue with formated links, update other files"""
         if page_url not in Spider.crawled:
             print(spider_name + ' now crawling ' + page_url)
             print('Queue ' + str(len(Spider.queue)) +
@@ -49,7 +48,7 @@ class Spider:
 
     @staticmethod
     def gather_links(page_url):
-        """Gets the html and links from file and format it"""
+        """Return the text and links from the webpage and format them"""
         links = set()
         try:
             r = requests.get(url=page_url)
@@ -67,7 +66,7 @@ class Spider:
 
     @staticmethod
     def add_links_to_queue(links):
-        """Add the new links to the spider queue set"""
+        """Add new links to the spider queue"""
         for link in links:
             if (link in Spider.queue) or (link in Spider.crawled):
                 continue
@@ -77,6 +76,6 @@ class Spider:
 
     @staticmethod
     def update_files():
-        """Add the spider data to queue and crawled files"""
+        """Update `crawled` and `queue` files"""
         set_to_file(Spider.queue, Spider.queue_file)
         set_to_file(Spider.crawled, Spider.crawled_file)

@@ -22,7 +22,7 @@ class States(StatesGroup):
 @dp.message_handler(commands=["start"])
 async def start_command(message: types.Message):
     """React on command /start"""
-    await message.answer("Hello!\nInsert some command.")
+    await message.answer("Hello!\nEnter some command.")
 
 
 @dp.message_handler(commands=["directories"])
@@ -40,6 +40,7 @@ async def directories_command(message: types.Message):
 @dp.message_handler(commands=["search"], state=None)
 async def search_command(message: types.Message):
     """React on command /search"""
+    """Request a catalog for search"""
     string = ''
     directories = os.listdir('directories')
     for directory in directories:
@@ -53,6 +54,7 @@ async def search_command(message: types.Message):
 
 @dp.message_handler(state=States.waiting_for_directory)
 async def input_directory(message: types.Message, state: FSMContext):
+    """Request a querry for search"""
     directory = message.text
 
     await state.update_data(directory=directory)
@@ -66,6 +68,7 @@ async def input_directory(message: types.Message, state: FSMContext):
 
 @dp.message_handler(state=States.waiting_for_query)
 async def input_directory(message: types.Message, state: FSMContext):
+    """Request a search type for search"""
     query = message.text
 
     await state.update_data(query=query)
@@ -77,7 +80,7 @@ async def input_directory(message: types.Message, state: FSMContext):
 
 @dp.message_handler(state=States.waiting_for_search_type)
 async def input_directory(message: types.Message, state: FSMContext):
-
+    """Show the search results"""
     await message.answer('Searching...', reply=False)
 
     data = await state.get_data()

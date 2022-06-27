@@ -2,7 +2,7 @@ from urllib.parse import urlparse
 
 
 def get_domain_name(url):
-    """Get the name of domen"""
+    """Return the name of domain"""
     try:
         results = get_sub_domain_name(url).split('.')
         return results[-2] + '.' + results[-1]
@@ -11,7 +11,7 @@ def get_domain_name(url):
 
 
 def get_project_name(url):
-    """Get the name of project"""
+    """Return the name of project"""
     try:
         results = get_sub_domain_name(url).split('.')
         return results[-2]
@@ -20,7 +20,7 @@ def get_project_name(url):
 
 
 def get_sub_domain_name(url): 
-    """Get the adress of domen (netloc)"""
+    """Return the address of domain (netloc)"""
     try:
         return urlparse(url).netloc
     except:

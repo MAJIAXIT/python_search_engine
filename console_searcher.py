@@ -4,21 +4,22 @@ from searcher.main import *
 import shutil
 
 
-commands = {'/delete', '/dirs', '/crawl', '/search'}
+commands = ('/remove', '/dirs', '/crawl', '/search')
 
 
 help_mes = '\n\
-/dirs - Get crawled domens\n\
-/delete - Delete directory of crowled domen\n\
-/crawl - Crawl the domen by homepage\n\
-/search - Search on crawled domen.\n'
+/dirs - Get crawled domains\n\
+/remove - Remove directory of crawled domain\n\
+/crawl - Crawl domain by homepage\n\
+/search - Search in crawled domain.\n'
 
-open = open('open.txt', 'r').read()
-print(open)
+_open = open('open.txt').read()
+print(_open)
 print(help_mes)
 
 
 def main():
+    """Command explorer"""
     answer = input('$ ')
 
     if answer in commands:
@@ -27,11 +28,11 @@ def main():
             main()
 
         if '/crawl' in answer:
-            url = input('Enter the homepage url to crawl: $ ')
+            url = input('Enter the homepage url to crawl it: $ ')
             crawl(url)
             main()
 
-        if '/delete' in answer:
+        if '/remove' in answer:
             if len(get_directories()) > 0:
                 directory = input('Enter directory to remove: $ ')
                 delete_directory(directory)
@@ -52,11 +53,13 @@ def main():
 
 
 def get_directories():
+    """Return already crawled directories"""
     directories = os.listdir('directories')
     return directories
 
 
 def delete_directory(directory):
+    """Remove already crawled directory"""
     if os.path.exists('directories/' + directory):
         shutil.rmtree('directories/' + directory)
         print('Directory removed successfuly.')
@@ -66,11 +69,13 @@ def delete_directory(directory):
 
 
 def crawl(url):
-    get_data_from_domen(url)
+    """Crawl the url"""
+    get_data_from_domain(url)
     print('\n')
 
 
 def search():
+    """Make search on directory"""
     directory = input('Enter directory: $ ')
     if directory in get_directories():
         text = input('Enter text to find: $ ')
@@ -92,5 +97,5 @@ if __name__ == '__main__':
         pass
     else:
         os.makedirs('directories')
-        print('`directories` folder created.')
+        print('Folder `directories` created.')
     main()

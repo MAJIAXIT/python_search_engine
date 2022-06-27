@@ -4,7 +4,7 @@ from crawler.analyze import analyze
 
 
 class LinksFinder(HTMLParser):
-    """Collect the links and content from url"""
+    """Extract links and text from a webpage"""
 
     def __init__(self, base_url, page_url):
         super().__init__()
@@ -15,7 +15,7 @@ class LinksFinder(HTMLParser):
         self.datatags = False
 
     def handle_starttag(self, tag, attrs):
-        """Collect the links and allows to get data"""
+        """Extract links"""
         if tag == 'a':
             for (attribute, value) in attrs:
                 if attribute == 'href':
@@ -27,12 +27,12 @@ class LinksFinder(HTMLParser):
             self.datatags = False
 
     def handle_data(self, data):
-        """Gets data if tag allows"""
+        """Extract text"""
         if self.datatags == True:
             self.data += data
 
     def page_links(self):
-        """Returns the finded links and the file content on url"""
+        """Return found links and text"""
         content = {
             "url": self.page_url,
             "data": analyze(self.data)

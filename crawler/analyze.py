@@ -14,27 +14,27 @@ ENSTEM = nltk.stem.SnowballStemmer('english')
 
 
 def tokenize(text):
-    """Parse the string to the list of words"""
+    """Parse a string into a list of words"""
     return text.split()
 
 
 def stopword_filter(tokens):
-    """Delete the words from STOPWORDS"""
+    """Remove words from STOPWORDS"""
     return [token for token in tokens if token not in STOPWORDS]
 
 
 def lowercase_filter(tokens):
-    """Rewrite words in lowercase"""
+    """Rewrite the words in lowercase"""
     return [token.lower() for token in tokens]
 
 
 def punctuation_filter(tokens):
-    """Delete all punctuation"""
+    """Remove all punctuation"""
     return [PUNCTUATION.sub('', token) for token in tokens]
 
 
 def stem_filter(tokens):
-    """Get the stem from words in russian and english words"""
+    """Get stems from Russian and English words"""
     tokens = [RUSTEM.stem(token) for token in tokens]
     tokens = [ENSTEM.stem(token) for token in tokens]
     return tokens

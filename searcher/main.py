@@ -3,7 +3,7 @@ from searcher.index import Index
 
 
 def index_pages(pages, index):
-    """Make the indexes of all pages"""
+    """Make indexes of all pages"""
     for i, page in enumerate(pages):
         index.index_page(page)
         if i % 1000 == 0:
@@ -12,7 +12,7 @@ def index_pages(pages, index):
 
 
 def search_on_directory(PROJECT_NAME, query, search_type):
-    """Make the search on indexes"""
+    """Make an index search"""
     index = index_pages(load_pages(PROJECT_NAME), Index())
     answer = []
 

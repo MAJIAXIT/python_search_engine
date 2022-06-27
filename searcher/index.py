@@ -8,7 +8,7 @@ class Index:
         self.pages = {}
 
     def index_page(self, page):
-        """Makes the indexes of the page"""
+        """Make page indexes"""
         if page.id not in self.pages:
             self.pages[page.id] = page
             page.analyze()
@@ -19,18 +19,18 @@ class Index:
             self.index[token].add(page.id)
 
     def page_frequency(self, token):
-        """Get the count of the tokens on page"""
+        """Return the count of tokens on page"""
         return len(self.index.get(token, set()))
 
     def inverse_page_frequency(self, token):
-        """Get the ratio of pages in index to pages with token"""
+        """Return the ratio of pages in the index to pages with a token"""
         if self.page_frequency(token) != 0:
             return math.log10(len(self.pages) / self.page_frequency(token))
         if self.page_frequency(token) == 0:
             return 1
 
     def _results(self, analyzed_query):
-        """Get the list of pages with tokens from query"""
+        """Return the list of pages with tokens from a query"""
         return [self.index.get(token, set()) for token in analyzed_query]
 
     def search(self, query, search_type='and', rank=True):
