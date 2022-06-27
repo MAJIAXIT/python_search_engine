@@ -20,8 +20,8 @@ pip install -r requirements.txt
 To use `bot_searcher`, you must create a `config.py` file and put `bot_token = '<token>'` into it with your bot token.
 
 ## Crawler block diagram
-![crawler_block_diagram](https://user-images.githubusercontent.com/76401858/167364551-95b69cb1-b62b-4a97-89dd-2f0fcc4cf590.png)
+![crawler_block_diagram](https://user-images.githubusercontent.com/76401858/176031808-6b23a33b-f0ba-44fd-bf74-ba05ab268145.png)
 
 
 ## Searcher block diagram
-![searcher_block_diagram](https://user-images.githubusercontent.com/76401858/167364602-5bc9b9c4-7fb6-4e6e-affd-a5ceb763df25.png)
+![searcher_block_diagram](https://user-images.githubusercontent.com/76401858/176031830-38e1ceff-628b-4f37-ba96-751538d97f5a.png)
