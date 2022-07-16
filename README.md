@@ -19,8 +19,9 @@ pip install -r requirements.txt
 - `bot_searcher` - telegram bot based on the aiogram library. With this bot, the user can only search in previously collected domains.
 To use `bot_searcher`, you must create a `config.py` file and put `bot_token = '<token>'` into it with your bot token.
 
-## Crawler block diagram
-![crawler_block_diagram](https://user-images.githubusercontent.com/76401858/176031808-6b23a33b-f0ba-44fd-bf74-ba05ab268145.png)
+
+## Searcher block diagram
+![crawler_block_diagram](https://user-images.githubusercontent.com/76401858/179345221-f3d7dee6-cef2-4110-8a72-403871e1832a.png)
 
 
 ## Searcher block diagram
